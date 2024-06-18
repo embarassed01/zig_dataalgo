@@ -30,3 +30,17 @@ pub fn printLinkedList(comptime T: type, node: ?*ListNode(T)) !void {
         });
     }
 }
+
+/// 打印列表
+pub fn printList(comptime T: type, list: std.ArrayList(T)) void {
+    std.debug.print("[", .{});
+    if (list.items.len > 0) {
+        for (list.items, 0..) |value, i| {
+            std.debug.print("{}{s}", .{
+                value, if (i == list.items.len - 1) "]" else ", "
+            });
+        }
+    } else {
+        std.debug.print("]", .{});
+    }
+}

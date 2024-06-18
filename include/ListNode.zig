@@ -30,3 +30,16 @@ pub fn arrToLinkedList(comptime T: type, mem_allocator: std.mem.Allocator, arr: 
     return dum.next;
 }
 
+/// 将 列表 反序列化为 链表
+pub fn listToLinkedList(comptime T: type, mem_allocator: std.mem.Allocator, list: std.ArrayList(T)) !?*ListNode(T) {
+    var dum = try mem_allocator.create(ListNode(T));
+    dum.init(0);
+    var head = dum;
+    for (list.items) |val| {
+        var tmp = try mem_allocator.create(ListNode(T));
+        tmp.init(val);
+        head.next = tmp;
+        head = head.next.?;
+    }
+    return dum.next;
+}
