@@ -1,4 +1,6 @@
 const std = @import("std");
+pub const ListUtil = @import("ListNode.zig");
+pub const ListNode = ListUtil.ListNode;
 
 /// 打印数组
 pub fn printArray(comptime T: type, nums: []T) void {
@@ -9,5 +11,22 @@ pub fn printArray(comptime T: type, nums: []T) void {
         }
     } else {
         std.debug.print("]", .{});
+    }
+}
+
+/// 打印链表
+pub fn printLinkedList(comptime T: type, node: ?*ListNode(T)) !void {
+    if (node == null) return;
+    var list = std.ArrayList(T).init(std.heap.page_allocator);
+    defer list.deinit();
+    var head = node;
+    while (head != null) {
+        try list.append(head.?.val);
+        head = head.?.next;
+    }
+    for (list.items, 0..) |value, i| {
+        std.debug.print("{}{s}", .{
+            value, if (i == list.items.len - 1) "\n" else "->"
+        });
     }
 }

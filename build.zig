@@ -5,6 +5,7 @@ pub fn build(b: *std.Build) void {
     const optimize = b.standardOptimizeOption(.{});
     const group_name_path = .{
         .{ .name = "array", .path = "array.zig" },
+        .{ .name = "linked_list", .path = "linked_list.zig" },
         };
     inline for (group_name_path) |name_path| {
         const exe = b.addExecutable(.{
