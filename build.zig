@@ -8,6 +8,7 @@ pub fn build(b: *std.Build) void {
         .{ .name = "linked_list", .path = "linked_list.zig" },
         .{ .name = "list", .path = "list.zig"},
         .{ .name = "my_list", .path = "my_list.zig" },
+        .{ .name = "linkedlist_stack", .path = "linkedlist_stack.zig" },
         };
     inline for (group_name_path) |name_path| {
         const exe = b.addExecutable(.{
