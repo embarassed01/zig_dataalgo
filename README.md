@@ -57,6 +57,25 @@
 栈是否为空=false
 ```
 
+### 数组 栈
+```bash
+% zig build run_array_stack
+栈 stack = [1, 3, 2, 5, 4]
+栈顶元素 peek = 4
+出栈元素 pop = 4，出栈后 stack = [1, 3, 2, 5]
+栈的长度 size = 4
+栈是否为空 = false
+```
 
+## 队列实现
+### 链表 队列
+```bash
+ % zig build run_linkedlist_queue
+队列queue=[1, 3, 2, 5, 4]
+队首元素peek=1
+出队元素pop=1, 出队后queue=[3, 2, 5, 4]
+队列长度size=4
+队列是否为空=false
+```
 
 

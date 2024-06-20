@@ -5,9 +5,9 @@ const inc = @import("include");
 pub fn MyList(comptime T: type) type {
     return struct {
         const Self = @This();
-
-        arr: []T = undefined,  // 数组（存储列表元素）
+        
         arrCapacity: usize = 5,  // 列表容量
+        arr: []T = undefined,  // 数组（存储列表元素）
         numSize: usize = 0,  // 列表长度（当前元素数量）
         extendRatio: usize = 2,  // 每次列表扩容的倍数
         mem_arena: ?std.heap.ArenaAllocator = null,
