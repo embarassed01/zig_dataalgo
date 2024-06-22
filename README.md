@@ -109,7 +109,33 @@
 队列长度size=4
 队列是否为空=false
 ```
+## 双向队列实现
+### 内置实现双向队列
+利用`DoublyLinkedList`
+```bash
+ % zig build run_dequeue
+双向队列dequeue=[2, 5, 4, 3, 1]
+队首元素peek_first=2
+队尾元素peek_last=1
+队首出队元素pop_first=2, 队首出队后dequeue=[5, 4, 3, 1]
+队尾出队元素pop_last=1, 队尾出队后dequeue=[5, 4, 3]
+双向队列长度size=3
+双向队列是否为空=false
+```
 
+### 双向链表 实现 双向队列
+```bash
+ % zig build run_linkedlist_deque
+双向队列deque=[3, 2, 5]
+队首元素peek_first=3
+队尾元素peek_last=5
+元素4队尾入队后deque=[3, 2, 5, 4]
+元素1队首入队后deque=[1, 3, 2, 5, 4]
+队尾出队元素=4, 队尾出队后deque=[1, 3, 2, 5]
+队首出队元素=1, 队首出队后deque=[3, 2, 5]
+双向队列长度size=3
+双向队列是否为空=false
+```
 
 
 
