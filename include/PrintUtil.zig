@@ -59,3 +59,13 @@ pub fn printQueue(comptime T: type, queue: std.DoublyLinkedList(T)) void {
         node = node.?.next;
     }
 }
+
+/// 打印哈希表
+pub fn printHashMap(comptime TKey: type, comptime TValue: type, map: std.AutoHashMap(TKey, TValue)) void {
+    var it = map.iterator();
+    while (it.next()) |kv| {
+        const key = kv.key_ptr.*;
+        const value = kv.value_ptr.*;
+        std.debug.print("{}->{s}\n", .{key, value});
+    }
+}

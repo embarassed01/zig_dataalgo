@@ -15,6 +15,8 @@ pub fn build(b: *std.Build) void {
         .{ .name = "queue", .path = "queue.zig" },
         .{ .name = "dequeue", .path = "dequeue.zig" },
         .{ .name = "linkedlist_deque", .path = "linkedlist_deque.zig" },
+        .{ .name = "hash_map", .path = "hash_map.zig" },
+        .{ .name = "array_hash_map", .path = "array_hash_map.zig" },
         };
     inline for (group_name_path) |name_path| {
         const exe = b.addExecutable(.{
