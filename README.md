@@ -99,6 +99,17 @@
 第9轮入队+出队后queue=[6, 7, 8, 9]
 ```
 
+### 内置实现队列
+利用`std.DoublyLinkedList`
+```bash
+ % zig build run_queue
+队列queue=[1, 3, 2, 5, 4]
+队首元素peek=1
+出队元素pop=1, 出队后queue=[3, 2, 5, 4]
+队列长度size=4
+队列是否为空=false
+```
+
 
 
 

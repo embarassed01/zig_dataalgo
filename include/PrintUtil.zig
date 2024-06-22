@@ -44,3 +44,18 @@ pub fn printList(comptime T: type, list: std.ArrayList(T)) void {
         std.debug.print("]", .{});
     }
 }
+
+/// 打印队列
+pub fn printQueue(comptime T: type, queue: std.DoublyLinkedList(T)) void {
+    var node = queue.first;
+    std.debug.print("[", .{});
+    var i: i32 = 0;
+    while (node != null) : (i += 1) {
+        const data = node.?.data;
+        std.debug.print("{}{s}", .{
+            data, 
+            if (i == queue.len - 1) "]" else ", "
+        });
+        node = node.?.next;
+    }
+}
