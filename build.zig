@@ -20,6 +20,7 @@ pub fn build(b: *std.Build) void {
         .{ .name = "binary_tree", .path = "binary_tree.zig" },
         .{ .name = "binary_tree_bfs", .path = "binary_tree_bfs.zig" },
         .{ .name = "binary_tree_dfs", .path = "binary_tree_dfs.zig" },
+        .{ .name = "binary_search_tree", .path = "binary_search_tree.zig" },
         };
     inline for (group_name_path) |name_path| {
         const exe = b.addExecutable(.{
