@@ -6,9 +6,9 @@ pub fn AVLTree(comptime T: type) type {
     return struct {
         const Self = @This();
 
-        root: ?*inc.TreeNode(T) = null,   // 根节点
+        root: ?*inc.TreeNode(T) = null, // 根节点
         mem_arena: ?std.heap.ArenaAllocator = null,
-        mem_allocator: std.mem.Allocator = undefined,  // 内存分配器
+        mem_allocator: std.mem.Allocator = undefined, // 内存分配器
 
         /// 构造方法
         pub fn init(self: *Self, allocator: std.mem.Allocator) void {
@@ -82,7 +82,7 @@ pub fn AVLTree(comptime T: type) type {
                 // 右旋
                 if (self.balanceFactor(node.?.left) >= 0) {
                     return self.rightRotate(node);
-                // 先左旋后右旋
+                    // 先左旋后右旋
                 } else {
                     node.?.left = self.leftRotate(node.?.left);
                     return self.rightRotate(node);
@@ -93,7 +93,7 @@ pub fn AVLTree(comptime T: type) type {
                 // 左旋
                 if (self.balanceFactor(node.?.right) <= 0) {
                     return self.leftRotate(node);
-                // 先右旋再左旋
+                    // 先右旋再左旋
                 } else {
                     node.?.right = self.rightRotate(node.?.right);
                     return self.leftRotate(node);
@@ -122,9 +122,9 @@ pub fn AVLTree(comptime T: type) type {
             } else if (val > node.?.val) {
                 node.?.right = try self.insertHelper(node.?.right, val);
             } else {
-                return node;  // 重复节点不插入，直接返回
+                return node; // 重复节点不插入，直接返回
             }
-            self.updateHeight(node);  // 更新节点高度
+            self.updateHeight(node); // 更新节点高度
             // 执行旋转操作，使该子树重新恢复平衡
             node = self.rotate(node);
             // 返回子树的根节点
@@ -151,11 +151,11 @@ pub fn AVLTree(comptime T: type) type {
                     // 子节点数量=0，直接返回
                     if (child == null) {
                         return null;
-                    // 子节点数量=1，直接删除node
+                        // 子节点数量=1，直接删除node
                     } else {
                         node = child;
                     }
-                // 子节点数量=2，则将中序遍历的下个节点删除，并用该节点替换当前节点
+                    // 子节点数量=2，则将中序遍历的下个节点删除，并用该节点替换当前节点
                 } else {
                     var temp = node.?.right;
                     while (temp.?.left != null) {
@@ -165,7 +165,7 @@ pub fn AVLTree(comptime T: type) type {
                     node.?.val = temp.?.val;
                 }
             }
-            self.updateHeight(node);  // 更新节点高度
+            self.updateHeight(node); // 更新节点高度
             // 执行旋转操作，使该子树重新恢复平衡
             node = self.rotate(node);
             // 返回子树的根节点
@@ -228,11 +228,11 @@ pub fn main() !void {
     // 请关注删除节点后，AVL 树是如何保持平衡的
     testRemove(i32, &avl_tree, 8); // 删除度为 0 的节点
     testRemove(i32, &avl_tree, 5); // 删除度为 1 的节点
-    testRemove(i32, &avl_tree, 4); // 删除度为 2 的节点    
+    testRemove(i32, &avl_tree, 4); // 删除度为 2 的节点
 
     // 查找节点
     const node = avl_tree.search(7).?;
-    std.debug.print("\n查找到的节点对象为 {any}，节点值 = {}\n", .{node, node.val});
+    std.debug.print("\n查找到的节点对象为 {any}，节点值 = {}\n", .{ node, node.val });
 
     _ = try std.io.getStdIn().reader().readByte();
 }

@@ -22,6 +22,8 @@ pub fn build(b: *std.Build) void {
         .{ .name = "binary_tree_dfs", .path = "binary_tree_dfs.zig" },
         .{ .name = "binary_search_tree", .path = "binary_search_tree.zig" },
         .{ .name = "avl_tree", .path = "avl_tree.zig" },
+        .{ .name = "heap", .path = "heap.zig" },
+        .{ .name = "my_heap", .path = "my_heap.zig" },
         };
     inline for (group_name_path) |name_path| {
         const exe = b.addExecutable(.{

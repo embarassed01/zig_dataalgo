@@ -124,3 +124,14 @@ pub fn printTree(root: ?*TreeNode(i32), prev: ?*Trunk, isRight: bool) !void {
 
     try printTree(root.?.left, &trunk, false);
 }
+
+/// 打印堆
+pub fn printHeap(comptime T: type, mem_allocator: std.mem.Allocator, queue: anytype) !void {
+    var arr = queue.items;
+    const len = queue.items.len;
+    std.debug.print("堆的数组表示: ", .{});
+    printArray(T, arr[0..len]);
+    std.debug.print("\n堆的树状表示: \n", .{});
+    const root = try TreeUtil.arrToTree(T, mem_allocator, arr[0..len]);
+    try printTree(root, null, false);
+}
